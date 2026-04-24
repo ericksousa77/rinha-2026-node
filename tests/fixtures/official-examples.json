@@ -1,0 +1,136 @@
+[
+  {
+    "id": "tx-1329056812",
+    "request": {
+      "id": "tx-1329056812",
+      "transaction": {
+        "amount": 41.12,
+        "installments": 2,
+        "requested_at": "2026-03-11T18:45:53Z"
+      },
+      "customer": {
+        "avg_amount": 82.24,
+        "tx_count_24h": 3,
+        "known_merchants": ["MERC-003", "MERC-016"]
+      },
+      "merchant": {
+        "id": "MERC-016",
+        "mcc": "5411",
+        "avg_amount": 60.25
+      },
+      "terminal": {
+        "is_online": false,
+        "card_present": true,
+        "km_from_home": 29.2331036248
+      },
+      "last_transaction": null
+    },
+    "vector": [0.0041, 0.1667, 0.05, 0.7826, 0.3333, -1, -1, 0.0292, 0.15, 0, 1, 0, 0.15, 0.006],
+    "expected_response": {
+      "approved": true,
+      "fraud_score": 0
+    }
+  },
+  {
+    "id": "tx-3576980410",
+    "request": {
+      "id": "tx-3576980410",
+      "transaction": {
+        "amount": 384.88,
+        "installments": 3,
+        "requested_at": "2026-03-11T20:23:35Z"
+      },
+      "customer": {
+        "avg_amount": 769.76,
+        "tx_count_24h": 3,
+        "known_merchants": ["MERC-009", "MERC-009", "MERC-001", "MERC-001"]
+      },
+      "merchant": {
+        "id": "MERC-001",
+        "mcc": "5912",
+        "avg_amount": 298.95
+      },
+      "terminal": {
+        "is_online": false,
+        "card_present": true,
+        "km_from_home": 13.7090520965
+      },
+      "last_transaction": {
+        "timestamp": "2026-03-11T14:58:35Z",
+        "km_from_current": 18.8626479774
+      }
+    },
+    "vector": [0.0385, 0.25, 0.05, 0.8696, 0.3333, 0.2257, 0.0189, 0.0137, 0.15, 0, 1, 0, 0.2, 0.0299],
+    "expected_response": {
+      "approved": true,
+      "fraud_score": 0
+    }
+  },
+  {
+    "id": "tx-3330991687",
+    "request": {
+      "id": "tx-3330991687",
+      "transaction": {
+        "amount": 9505.97,
+        "installments": 10,
+        "requested_at": "2026-03-14T05:15:12Z"
+      },
+      "customer": {
+        "avg_amount": 81.28,
+        "tx_count_24h": 20,
+        "known_merchants": ["MERC-008", "MERC-007", "MERC-005"]
+      },
+      "merchant": {
+        "id": "MERC-068",
+        "mcc": "7802",
+        "avg_amount": 54.86
+      },
+      "terminal": {
+        "is_online": false,
+        "card_present": true,
+        "km_from_home": 952.2745933273
+      },
+      "last_transaction": null
+    },
+    "vector": [0.9506, 0.8333, 1, 0.2174, 0.8333, -1, -1, 0.9523, 1, 0, 1, 1, 0.75, 0.0055],
+    "expected_response": {
+      "approved": false,
+      "fraud_score": 1
+    }
+  },
+  {
+    "id": "tx-2190156584",
+    "request": {
+      "id": "tx-2190156584",
+      "transaction": {
+        "amount": 899.77,
+        "installments": 7,
+        "requested_at": "2026-03-21T10:58:34Z"
+      },
+      "customer": {
+        "avg_amount": 147.3,
+        "tx_count_24h": 9,
+        "known_merchants": ["MERC-018", "MERC-015", "MERC-006"]
+      },
+      "merchant": {
+        "id": "MERC-056",
+        "mcc": "4511",
+        "avg_amount": 232.1
+      },
+      "terminal": {
+        "is_online": false,
+        "card_present": true,
+        "km_from_home": 364.9513713841
+      },
+      "last_transaction": {
+        "timestamp": "2026-03-21T09:39:34Z",
+        "km_from_current": 210.1108397055
+      }
+    },
+    "vector": [0.09, 0.5833, 0.6108, 0.4348, 0.8333, 0.0549, 0.2101, 0.365, 0.45, 0, 1, 1, 0.35, 0.0232],
+    "expected_response": {
+      "approved": true,
+      "fraud_score": 0.4
+    }
+  }
+]
