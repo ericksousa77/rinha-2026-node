@@ -1,0 +1,21 @@
+{
+  "name": "rinha-2026-node",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Implementacao da Rinha de Backend 2026 em Node.js puro.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "preprocess": "node scripts/preprocess.mjs",
+    "pretest": "node scripts/preprocess.mjs",
+    "test": "node --test --test-concurrency=1 tests/*.test.mjs",
+    "start": "node src/server.js",
+    "dev": "node src/server.js",
+    "bench:engine": "node bench/bench-engine.mjs"
+  },
+  "dependencies": {
+    "hnswlib-node": "^3.0.0"
+  }
+}
