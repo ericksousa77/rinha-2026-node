@@ -1,3 +1,29 @@
+# Rinha build artifacts
+data/*
+!data/.gitkeep
+artifacts/
+*.sock
+test/results.json
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.orig
+
+# Local secrets / machine-specific config
+.direnv/
+.envrc
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
 # Logs
 logs
 *.log
