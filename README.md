@@ -21,8 +21,40 @@ npm start
 
 Para desenvolvimento local em TCP, o servidor usa `PORT=9999` por padrao. Para o arranjo final da rinha, defina `RINHA_UNIX_SOCKET_PATH`.
 
-## Proximos passos
+## Testes com k6
 
-- fechar a fase de benchmarks e documentacao (`docs/BENCHMARKS.md`, `docs/LEARNINGS.md`);
-- validar o stack completo com `docker compose up`;
-- adicionar backend `hnsw` como experimento controlado.
+Os testes oficiais de carga e score ficam em `test/` e devem ser executados com `k6`.
+
+Pre-requisitos:
+- `k6` instalado na maquina
+- stack da aplicacao em execucao na porta `9999`
+
+Suba a stack:
+
+```bash
+docker compose up -d --build
+```
+
+Rode o smoke test:
+
+```bash
+k6 run test/smoke.js
+```
+
+Rode o teste completo:
+
+```bash
+k6 run test/test.js
+```
+
+Ao final, o `k6` gera o arquivo `test/results.json` com:
+- `p99`
+- `final_score`
+- contadores de `FP`, `FN` e `http_errors`
+
+Para comparar backends, altere apenas a env antes de subir a stack:
+
+```bash
+RINHA_SEARCH_BACKEND=exact docker compose up -d --build --force-recreate
+RINHA_SEARCH_BACKEND=hnsw docker compose up -d --build --force-recreate
+```
