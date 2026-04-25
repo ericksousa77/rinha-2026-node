@@ -1,4 +1,6 @@
-FROM node:22-slim AS builder
+ARG NODE_VERSION=22
+
+FROM node:${NODE_VERSION}-slim AS builder
 
 WORKDIR /app
 
@@ -7,7 +9,7 @@ COPY scripts ./scripts
 COPY resources ./resources
 RUN mkdir -p data && node scripts/preprocess.mjs
 
-FROM node:22-alpine AS deps
+FROM node:${NODE_VERSION}-alpine AS deps
 
 WORKDIR /app
 
@@ -16,7 +18,7 @@ RUN apk add --no-cache g++ make python3
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
 
-FROM node:22-alpine AS runner
+FROM node:${NODE_VERSION}-alpine AS runner
 
 WORKDIR /app
 

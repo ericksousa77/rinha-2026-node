@@ -19,6 +19,8 @@ services:
   api1:
     build:
       context: .
+      args:
+        NODE_VERSION: ${NODE_VERSION:-22}
     platform: linux/amd64
     environment:
       NODE_ENV: production
@@ -37,6 +39,8 @@ services:
   api2:
     build:
       context: .
+      args:
+        NODE_VERSION: ${NODE_VERSION:-22}
     platform: linux/amd64
     environment:
       NODE_ENV: production

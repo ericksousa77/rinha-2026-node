@@ -35,6 +35,13 @@ Suba a stack:
 docker compose up -d --build
 ```
 
+Se quiser escolher a versao do Node usada na imagem:
+
+```bash
+NODE_VERSION=22 docker compose up -d --build
+NODE_VERSION=24 docker compose up -d --build
+```
+
 Rode o smoke test:
 
 ```bash
@@ -57,4 +64,11 @@ Para comparar backends, altere apenas a env antes de subir a stack:
 ```bash
 RINHA_SEARCH_BACKEND=exact docker compose up -d --build --force-recreate
 RINHA_SEARCH_BACKEND=hnsw docker compose up -d --build --force-recreate
+```
+
+Tambem e possivel combinar backend e versao do Node:
+
+```bash
+NODE_VERSION=22 RINHA_SEARCH_BACKEND=hnsw docker compose up -d --build --force-recreate
+NODE_VERSION=24 RINHA_SEARCH_BACKEND=hnsw docker compose up -d --build --force-recreate
 ```
