@@ -1,6 +1,6 @@
 services:
   haproxy:
-    image: haproxytech/haproxy-alpine:3.0
+    image: haproxytech/haproxy-alpine:3.2
     platform: linux/amd64
     depends_on:
       - api1
@@ -27,6 +27,9 @@ services:
       RINHA_RESOURCES_DIR: ./data
       RINHA_SEARCH_BACKEND: ${RINHA_SEARCH_BACKEND:-exact}
       RINHA_HNSW_EF_SEARCH: ${RINHA_HNSW_EF_SEARCH:-50}
+      RINHA_HNSW_EF_CONSTRUCTION: ${RINHA_HNSW_EF_CONSTRUCTION:-200}
+      RINHA_HNSW_M: ${RINHA_HNSW_M:-16}
+      RINHA_HNSW_RANDOM_SEED: ${RINHA_HNSW_RANDOM_SEED:-100}
       RINHA_UNIX_SOCKET_PATH: /tmp/sockets/api-1.sock
     volumes:
       - sockets:/tmp/sockets
@@ -47,6 +50,9 @@ services:
       RINHA_RESOURCES_DIR: ./data
       RINHA_SEARCH_BACKEND: ${RINHA_SEARCH_BACKEND:-exact}
       RINHA_HNSW_EF_SEARCH: ${RINHA_HNSW_EF_SEARCH:-50}
+      RINHA_HNSW_EF_CONSTRUCTION: ${RINHA_HNSW_EF_CONSTRUCTION:-200}
+      RINHA_HNSW_M: ${RINHA_HNSW_M:-16}
+      RINHA_HNSW_RANDOM_SEED: ${RINHA_HNSW_RANDOM_SEED:-100}
       RINHA_UNIX_SOCKET_PATH: /tmp/sockets/api-2.sock
     volumes:
       - sockets:/tmp/sockets
