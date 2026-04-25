@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Implementacao da Rinha de Backend 2026 em Node.js puro.",
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   },
   "scripts": {
     "preprocess": "node scripts/preprocess.mjs",
