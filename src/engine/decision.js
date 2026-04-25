@@ -1,3 +1,5 @@
+import { DEFAULT_FRAUDE_SCORE_THRESHOLD } from '../data/constants.js';
+
 const FRAUD_SCORES = Object.freeze([0, 0.2, 0.4, 0.6, 0.8, 1]);
 
 /**
@@ -10,12 +12,13 @@ export function decideFromLabels(labelBits) {
     fraudCount += labelBits[index];
   }
 
-  const fraudScore = labelBits.length === 5
-    ? FRAUD_SCORES[fraudCount]
-    : Number((fraudCount / labelBits.length).toFixed(4));
+  const fraudScore =
+    labelBits.length === 5
+      ? FRAUD_SCORES[fraudCount]
+      : Number((fraudCount / labelBits.length).toFixed(4));
 
   return {
-    approved: fraudScore < 0.6,
+    approved: fraudScore < DEFAULT_FRAUDE_SCORE_THRESHOLD,
     fraud_score: fraudScore,
   };
 }

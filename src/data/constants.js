@@ -1,6 +1,7 @@
 export const VECTOR_DIMENSIONS = 14;
 export const TOP_K = 5;
 export const DEFAULT_MCC_RISK_FALLBACK = 0.5;
+export const DEFAULT_FRAUDE_SCORE_THRESHOLD = 0.6;
 
 export const DEFAULT_NORMALIZATION = Object.freeze({
   max_amount: 10_000,
