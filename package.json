@@ -12,8 +12,7 @@
     "pretest": "node scripts/preprocess.mjs",
     "test": "node --test --test-concurrency=1 tests/*.test.mjs",
     "start": "node src/server.js",
-    "dev": "node src/server.js",
-    "bench:engine": "node bench/bench-engine.mjs"
+    "dev": "node src/server.js"
   },
   "dependencies": {
     "hnswlib-node": "^3.0.0"
