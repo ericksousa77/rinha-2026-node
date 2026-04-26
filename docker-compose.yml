@@ -1,0 +1,60 @@
+services:
+  haproxy:
+    image: haproxytech/haproxy-alpine:3.2
+    platform: linux/amd64
+    depends_on:
+      - api1
+      - api2
+    ports:
+      - "9999:9999"
+    volumes:
+      - sockets:/tmp/sockets
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    deploy:
+      resources:
+        limits:
+          cpus: "0.10"
+          memory: 20M
+
+  api1:
+    image: ${RINHA_IMAGE:-ghcr.io/ericksousa77/rinha-2026-node:latest}
+    platform: linux/amd64
+    environment:
+      NODE_ENV: production
+      RINHA_RESOURCES_DIR: ./data
+      RINHA_SEARCH_BACKEND: hnsw
+      RINHA_HNSW_EF_SEARCH: 120
+      RINHA_HNSW_EF_CONSTRUCTION: 200
+      RINHA_HNSW_M: 16
+      RINHA_HNSW_RANDOM_SEED: 100
+      RINHA_UNIX_SOCKET_PATH: /tmp/sockets/api-1.sock
+    volumes:
+      - sockets:/tmp/sockets
+    deploy:
+      resources:
+        limits:
+          cpus: "0.45"
+          memory: 165M
+
+  api2:
+    image: ${RINHA_IMAGE:-ghcr.io/ericksousa77/rinha-2026-node:latest}
+    platform: linux/amd64
+    environment:
+      NODE_ENV: production
+      RINHA_RESOURCES_DIR: ./data
+      RINHA_SEARCH_BACKEND: hnsw
+      RINHA_HNSW_EF_SEARCH: 120
+      RINHA_HNSW_EF_CONSTRUCTION: 200
+      RINHA_HNSW_M: 16
+      RINHA_HNSW_RANDOM_SEED: 100
+      RINHA_UNIX_SOCKET_PATH: /tmp/sockets/api-2.sock
+    volumes:
+      - sockets:/tmp/sockets
+    deploy:
+      resources:
+        limits:
+          cpus: "0.45"
+          memory: 165M
+
+volumes:
+  sockets:
