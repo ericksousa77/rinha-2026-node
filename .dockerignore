@@ -6,4 +6,4 @@ npm-debug.log*
 coverage
 docs
 bench
-tests
+unit-tests

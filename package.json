@@ -10,7 +10,7 @@
   "scripts": {
     "preprocess": "node scripts/preprocess.mjs",
     "pretest": "node scripts/preprocess.mjs",
-    "test": "node --test --test-concurrency=1 tests/*.test.mjs",
+    "test": "node --test --test-concurrency=1 unit-tests/*.test.mjs",
     "start": "node src/server.js",
     "dev": "node src/server.js"
   },
