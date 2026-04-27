@@ -1,6 +1,6 @@
 ARG NODE_VERSION=24
 
-FROM node:${NODE_VERSION}-slim AS builder
+FROM node:${NODE_VERSION}-alpine AS builder
 
 WORKDIR /app
 
