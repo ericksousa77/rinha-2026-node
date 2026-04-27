@@ -13,8 +13,12 @@ services:
     deploy:
       resources:
         limits:
-          cpus: "0.10"
-          memory: 20M
+          cpus: "0.20"
+          memory: 30M
+    ulimits:
+      nofile:
+        soft: 65535
+        hard: 65535
 
   api1:
     build:
@@ -36,8 +40,12 @@ services:
     deploy:
       resources:
         limits:
-          cpus: "0.45"
-          memory: 165M
+          cpus: "0.40"
+          memory: 160M
+    ulimits:
+      nofile:
+        soft: 65535
+        hard: 65535
 
   api2:
     build:
@@ -59,8 +67,16 @@ services:
     deploy:
       resources:
         limits:
-          cpus: "0.45"
-          memory: 165M
+          cpus: "0.40"
+          memory: 160M
+    ulimits:
+      nofile:
+        soft: 65535
+        hard: 65535
 
 volumes:
   sockets:
+    driver_opts:
+      type: tmpfs
+      device: tmpfs
+      o: "size=4m,mode=0777"

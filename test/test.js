@@ -20,19 +20,20 @@ const errorCount = new Counter('error_count');
 
 export const options = {
     summaryTrendStats: ['p(99)'],
+    dns: {
+        ttl: '5m',
+        select: 'roundRobin',
+    },
     scenarios: {
         default: {
             executor: 'ramping-arrival-rate',
             startRate: 1,
             timeUnit: '1s',
-            preAllocatedVUs: 5,
-            maxVUs: 150,
+            preAllocatedVUs: 10,
+            maxVUs: 50,
             gracefulStop: '10s',
             stages: [
-                { duration: '10s', target: 10 },
-                { duration: '10s', target: 50 },
-                { duration: '20s', target: 350 },
-                { duration: '20s', target: 650 },
+                { duration: '120s', target: 650 },
             ],
         },
     },
@@ -56,7 +57,7 @@ export default function () {
     const res = http.post(
         'http://localhost:9999/fraud-score',
         JSON.stringify(entry.request),
-        { headers: { 'Content-Type': 'application/json' } }
+        { headers: { 'Content-Type': 'application/json' }, timeout: '1500ms' }
     );
 
     if (res.status === 200) {
@@ -77,7 +78,6 @@ export default function () {
 }
 
 export function handleSummary(data) {
-    // Constantes do scoring (ver docs/superpowers/specs/2026-04-22-logarithmic-scoring-design.md)
     const K = 1000;
     const T_MAX_MS = 1000;
     const P99_MIN_MS = 1;
